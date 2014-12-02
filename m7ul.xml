@@ -27,7 +27,7 @@
   <!-- aosp -->
 
 <project path="prebuilt" name="platform/prebuilt" remote="aosp"/>
-  <project name="platform/external/harfbuzz_ng" path="external/harfbuzz_ng" remote="aosp" revision="refs/tags/android-4.3_r2.1"/>
+  <project name="platform/external/harfbuzz_ng" path="external/harfbuzz_ng" remote="aosp"/>
 
   <!-- cyanogenmod -->
   <project name="android_system_core" path="system/core" revision="19b46a460a63acc17ddfe619cb740b5e556ee1ca"/>
