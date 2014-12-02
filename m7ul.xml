@@ -5,7 +5,7 @@
   <remote fetch="git://github.com/mozilla/" name="mozilla"/>
   <remote fetch="git://github.com/apitrace/" name="apitrace"/>
 
-  <default revision="cm-11" remote="CyanogenMod" sync-c="true" sync-j="4"/>
+  <default revision="cm-11.0" remote="CyanogenMod" sync-c="true" sync-j="4"/>
 
   <!-- b2g -->
   <project name="platform_build" path="build" remote="b2g" revision="cc5ebffbf34aba356f0890c14df3953183813a0d">
