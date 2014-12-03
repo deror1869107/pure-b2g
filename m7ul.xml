@@ -13,8 +13,9 @@
       fetch="https://git.mozilla.org/releases" />
   <remote name="apitrace" fetch="git://github.com/apitrace/" />
   <remote fetch="git://github.com/CyanogenMod/" name="CyanogenMod"/>
-  <default revision="refs/tags/android-4.4.4_r2"
-           remote="linaro"
+  <remote fetch="git://codeaurora.org/" name="caf"/>
+  <default revision="LNX.LF.3.5.2.1_1"
+           remote="caf"
            sync-j="4" />
 
   <!-- Gonk specific things and forks -->
