@@ -35,9 +35,6 @@
   <include name="base-kk-caf.xml"/> 
 
   <!-- m7ul things -->
-  <project path="device/htc/m7ul" name="android_device_htc_m7ul" revision="74ba46e332ff94d1b94e998d0d1c84e460e6500a" remote="CyanogenMod"/>
-  <project path="device/htc/m7-common" name="android_device_htc_m7-common" revision="78d732b78152db6fb4db3fbfeafa6ee0f65ee069" remote="CyanogenMod"/>
-  <project path="device/htc/msm8960-common" name="android_device_htc_msm8960-common" revision="d3b566f6804589c207baa7d5840631059c610727" remote="CyanogenMod"/>
-  <project path="kernel/htc/m7" name="android_kernel_htc_m7" revision="cd07d32725f7f2be84ad5ecfda90e8f99bc98f45" remote="CyanogenMod"/>
+
 
 </manifest>
