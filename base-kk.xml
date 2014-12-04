@@ -40,7 +40,7 @@
   <project name="device/sample" path="device/sample"/>
   <project name="platform/abi/cpp" path="abi/cpp"/>
   <project name="platform/bionic" path="bionic"/>
-  <project name="platform/bootable/recovery" path="bootable/recovery"/>
+  <project name="platform/bootable/recovery" path="bootable/recovery" revision="83e26bfb29582815bc84aef745b5acb926e748b5" remote="CyanogenMod"/>
   <project name="platform/external/aac" path="external/aac"/>
   <project name="platform/external/bison" path="external/bison"/>
   <project name="platform/external/bluetooth/bluedroid" path="external/bluetooth/bluedroid"/>
