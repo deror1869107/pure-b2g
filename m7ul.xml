@@ -20,7 +20,7 @@
 
   <!-- Gonk specific things and forks -->
   <!-- Stock Android things -->
-  <include name="base-kk-caf.xml"/> 
+  <include name="base-kk.xml"/> 
 
 
 
