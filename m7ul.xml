@@ -1,39 +1,161 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <manifest>
-
-  <remote  name="aosp"
-           fetch="https://android.googlesource.com/" />
-  <remote name="b2g"
-          fetch="git://github.com/mozilla-b2g/" />
-  <remote  name="linaro"
-           fetch="http://android.git.linaro.org/git-ro/" />
-  <remote name="mozilla"
-	  fetch="git://github.com/mozilla/" />
-  <remote name="mozillaorg"
-      fetch="https://git.mozilla.org/releases" />
-  <remote name="apitrace" fetch="git://github.com/apitrace/" />
   <remote fetch="git://github.com/CyanogenMod/" name="CyanogenMod"/>
+  <remote fetch="https://android.googlesource.com/" name="aosp"/>
+  <remote fetch="git://github.com/mozilla-b2g/" name="b2g"/>
+  <remote fetch="git://github.com/mozilla/" name="mozilla"/>
+  <remote fetch="git://github.com/apitrace/" name="apitrace"/>
   <remote fetch="git://codeaurora.org/" name="caf"/>
-  <default revision="LNX.LF.3.5.2.1_1"
-           remote="caf"
-           sync-j="4" />
 
-  <!-- Gonk specific things and forks -->
-  <!-- Stock Android things -->
-  <include name="base-kk.xml"/> 
+  <default revision="cm-10.2" remote="CyanogenMod" sync-c="true" sync-j="4"/>
 
+  <!-- b2g -->
+  <project name="platform_build" path="build" remote="b2g" revision="cc5ebffbf34aba356f0890c14df3953183813a0d">
+    <copyfile dest="Makefile" src="core/root.mk"/>
+  </project>
+  <project name="mozilla-central" path="gecko" remote="mozilla" revision="11715ada1520c953f327c7d1fb60ad82adabdc64"/>
+  <project name="rilproxy" path="rilproxy" remote="b2g" revision="827214fcf38d6569aeb5c6d6f31cb296d1f09272"/>
+  <project name="fake-libdvm" path="dalvik" remote="b2g" revision="d50ae982b19f42f0b66d08b9eb306be81687869f"/>
+  <project name="gaia" path="gaia" remote="b2g" revision="8bff34a3ddd39041d9744ab351ef3c4776fa4602"/>
+  <project name="gonk-misc" path="gonk-misc" remote="b2g" revision="4694112134d38141b29532c4740ef426ad4d3442"/>
+  <project name="moztt" path="external/moztt" remote="b2g" revision="a2de4bc8899402044125a13d3af18246e9badb92"/>
 
+  <!-- device specific -->
+  <project path="device/htc/m7ul" name="android_device_htc_m7ul" revision="74ba46e332ff94d1b94e998d0d1c84e460e6500a"/>
+  <project path="device/htc/m7-common" name="android_device_htc_m7-common" revision="78d732b78152db6fb4db3fbfeafa6ee0f65ee069"/>
+  <project path="device/htc/msm8960-common" name="android_device_htc_msm8960-common" revision="d3b566f6804589c207baa7d5840631059c610727"/>
+  <project path="kernel/htc/m7" name="android_kernel_htc_m7" revision="cd07d32725f7f2be84ad5ecfda90e8f99bc98f45"/>
 
+  <!-- aosp -->
+  <project groups="darwin" name="platform/prebuilts/clang/darwin-x86/3.1" path="prebuilts/clang/darwin-x86/3.1" remote="aosp" revision="refs/tags/android-4.3_r2.1"/>
+  <project groups="darwin" name="platform/prebuilts/clang/darwin-x86/3.2" path="prebuilts/clang/darwin-x86/3.2" remote="aosp" revision="refs/tags/android-4.3_r2.1"/>
+  <project groups="linux" name="platform/prebuilts/clang/linux-x86/3.1" path="prebuilts/clang/linux-x86/3.1" remote="aosp" revision="refs/tags/android-4.3_r2.1"/>
+  <project groups="linux" name="platform/prebuilts/clang/linux-x86/3.2" path="prebuilts/clang/linux-x86/3.2" remote="aosp" revision="refs/tags/android-4.3_r2.1"/>
+  <project groups="linux" name="platform/prebuilts/gcc/linux-x86/host/i686-linux-glibc2.7-4.6" path="prebuilts/gcc/linux-x86/host/i686-linux-glibc2.7-4.6" remote="aosp" revision="refs/tags/android-4.3_r2.1"/>
+  <project groups="linux" name="platform/prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.7-4.6" path="prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.7-4.6" remote="aosp" revision="refs/tags/android-4.3_r2.1"/>
+  <project groups="linux,arm" name="platform/prebuilts/gcc/linux-x86/arm/arm-eabi-4.7" path="prebuilts/gcc/linux-x86/arm/arm-eabi-4.7" remote="aosp" revision="refs/tags/android-4.3_r2.1"/>
+  <project groups="linux,arm" name="platform/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.7" path="prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.7" remote="aosp" revision="refs/tags/android-4.3_r2.1"/>
+  <project path="prebuilts/gcc/linux-x86/arm/arm-eabi-4.6" name="platform/prebuilts/gcc/linux-x86/arm/arm-eabi-4.6" groups="linux,arm" remote="aosp" revision="refs/tags/android-4.3_r2.1"/>
+  <project path="ndk" name="platform/ndk" remote="aosp" revision="refs/tags/android-4.3_r2.1"/>
+  <project path="prebuilts/misc" name="platform/prebuilts/misc" remote="aosp" revision="refs/tags/android-4.3_r2.1"/>
+  <project path="prebuilts/ndk" name="platform/prebuilts/ndk" remote="aosp" revision="refs/tags/android-4.3_r2.1"/>
+  <project path="prebuilts/qemu-kernel" name="platform/prebuilts/qemu-kernel" remote="aosp" revision="refs/tags/android-4.3_r2.1"/>
+  <project path="prebuilts/sdk" name="platform/prebuilts/sdk" remote="aosp" revision="refs/tags/android-4.3_r2.1"/>
+  <project path="prebuilts/tools" name="platform/prebuilts/tools" remote="aosp" revision="refs/tags/android-4.3_r2.1"/>
+  <project name="platform/external/harfbuzz_ng" path="external/harfbuzz_ng" remote="aosp" revision="refs/tags/android-4.3_r2.1"/>
 
+  <!-- cyanogenmod -->
+  <project name="android_system_core" path="system/core" revision="19b46a460a63acc17ddfe619cb740b5e556ee1ca"/>
+  <project name="android_device_common" path="device/common" revision="0301abc6da47b216b6109ccacc2998a7d0d17014"/>
+  <project name="android_device_sample" path="device/sample" revision="706ab4468875087f59ea6c07a8d8cbe5f0938fd7"/>
+  <project name="android_abi_cpp" path="abi/cpp" revision="eb789ea833d8d800662b67914d9c1785a58c2caa"/>
+  <project name="android_bionic" path="bionic" revision="e9a7a0342d645e1475953f6512a1f3b90465ae51"/>
+  <project name="android_bootable_recovery" path="bootable/recovery" revision="83e26bfb29582815bc84aef745b5acb926e748b5"/>
+  <project name="android_external_aac" path="external/aac" revision="a3f948498bb64c94bf53dd9ed0617e1b4d02e1e5"/>
+ <!-- <project name="android_external_bluetooth_bluedroid" path="external/bluetooth/bluedroid" revision="fe02b464a78b561e2f2938b633fa324652805ebf"/>-->
+  <project name="android_external_bison" path="external/bison" revision="9b56c82c11e460d6ad199747b4a985a375c327fb"/>
+  <project name="android_external_bsdiff" path="external/bsdiff" revision="23e322ab19fb7d74c2c37e40ce364d9f709bdcee"/>
+  <project name="android_external_busybox" path="external/busybox" revision="3f2a90a33ce303046fce820f3934aefe23abb065"/>
+  <project name="android_external_bzip2" path="external/bzip2" revision="33358c7abd1448a27690a2137bbbfdc32421bd45"/>
+  <project name="android_external_checkpolicy" path="external/checkpolicy" revision="0d73ef7049feee794f14cf1af88d05dae8139914"/>
+  <project name="android_external_clang" path="external/clang" revision="e4396427cbf55e1559cc7aa69903c367a62ac9ca"/>
+  <project name="android_external_compiler-rt" path="external/compiler-rt" revision="723a9f0832f26b54599339e2a16e3be8e14ae75c"/>
+  <project name="android_external_dhcpcd" path="external/dhcpcd" revision="fcd180be898bf33502700a22ba2b5bdb4ade048d"/>
+  <project name="android_external_dnsmasq" path="external/dnsmasq" revision="e0957c9686600aa6fa75f66884e85accdadafb33"/>
+  <project name="android_external_dropbear" path="external/dropbear" revision="a34ddbe3819bc465968f3676c734b405e655f8b7"/>
+  <project name="android_external_e2fsprogs" path="external/e2fsprogs" revision="a4ea106d8166fe9b9fbb62e64d29e4f4983b29ba"/>
+  <project name="android_external_elfutils" path="external/elfutils" revision="1acd5bb52037d4eeea0e3e00253b2785faf2d59e"/>
+  <project name="android_external_expat" path="external/expat" revision="9f2b6f4a8a04bc3afeb4d3914ecfed83b5712f2e"/>
+  <project name="android_external_fdlibm" path="external/fdlibm" revision="58cdea5debfe14edbc31815b6d318127fc9295b0"/>
+  <project name="android_external_flac" path="external/flac" revision="686d6ff2afda2ea3211bec37ad0daa655c24e6d4"/>
+  <project name="android_external_freetype" path="external/freetype" revision="8afe960626dbf326354b836fd4d63e05b6974195"/>
+  <project name="android_external_gcc-demangle" path="external/gcc-demangle" revision="58d84850772c393e1496375672c2a35cc127f0ef"/>
+  <project name="android_external_genext2fs" path="external/genext2fs" revision="448e78c0025c1d378f968785b3b8231a0ce935cc"/>
+  <project name="android_external_giflib" path="external/giflib" revision="b027dc00b076d1820924bdcefeb987bb5d2dbf35"/>
+  <project name="android_external_gtest" path="external/gtest" revision="7e7195d0d9db3ef1cc458f3da750ce1b772e2f2d"/>
+  <project name="android_external_harfbuzz" path="external/harfbuzz" revision="f753a4619c05b3cf3e915741870b1a09d21e0b22"/>
+  <project name="android_external_icu4c" path="external/icu4c" revision="4612d1a727bec2e31ec4763e4fd8e626f0b2f075"/>
+  <project name="android_external_iproute2" path="external/iproute2" revision="f5c36f4343c9704ab38421b602993ee7a2f83f66"/>
+  <project name="android_external_ipsec-tools" path="external/ipsec-tools" revision="221cc02916be0dbb826ae9804e9c25d459b91885"/>
+  <project name="android_external_iptables" path="external/iptables" revision="6bb2fc1506416de1f3eef498fdbf2e144fa71cab"/>
+  <project name="android_external_jack" path="external/jack" revision="5ceb2025ac5d25ed48183ac2d3dac4691fe761fb"/>
+  <project name="android_external_jhead" path="external/jhead" revision="4b8a373d35cf2117c2a1868f9d102ff72dead4c0"/>
+  <project name="android_external_jpeg" path="external/jpeg" revision="0482854ffd8f8df97f195df0b08628068232c483"/>
+  <project name="android_external_junit" path="external/junit" revision="f6d438cef98ee5a50eec393ef42ef1a251f8431c"/>
+  <project name="android_external_libgsm" path="external/libgsm" revision="490b951676c811809836067727494e311dbd5593"/>
+  <project name="android_external_liblzf" path="external/liblzf" revision="6946aa575b0949d045722794850896099d937cbb"/>
+  <project name="android_external_libnfc-nxp" path="external/libnfc-nxp" revision="c90b7baf834fcf0b087e20e3b8a9a0fd3531f6cc"/>
+  <project name="android_external_libnl-headers" path="external/libnl-headers" revision="6ccf7349d61f73ac26a0675d735d903ab919c658"/>
+  <project name="android_external_libogg" path="external/libogg" revision="ec0b24fb1468abe37be4164a6feb16568e036bde"/>
+  <project name="android_external_libpng" path="external/libpng" revision="767d210c9cf2281a709841cc601f9fb98542fb33"/>
+  <project name="android_external_libselinux" path="external/libselinux" revision="ebcd881692e2f462b6c09e66579358df6bb1db32"/>
+  <project name="android_external_libsepol" path="external/libsepol" revision="6561001624b0694d83380dd04a8287e12e7dc42d"/>
+  <project name="android_external_libvpx" path="external/libvpx" revision="9c0c9b59319f4528414b74e28b0309e7349ba0f7"/>
+  <project name="android_external_llvm" path="external/llvm" revision="0e59ca85e2ddd115e65302e2571cf7732387db1f"/>
+  <project name="android_external_mdnsresponder" path="external/mdnsresponder" revision="087fe2fe9794bd7f5792dc034fe8adaa350e6a66"/>
+  <project name="android_external_mksh" path="external/mksh" revision="da8e51eea15d8ad336e6fd095efa8a738e23bd5e"/>
+  <project name="android_external_netcat" path="external/netcat" revision="2d4c529d2a6e4be810d21c00dc4daa789faf7ea1"/>
+  <project name="android_external_netperf" path="external/netperf" revision="58ecd3b7c76263900e38921360e334a416aec362"/>
+  <project name="android_external_openssl" path="external/openssl" revision="d6a44726c0012f08081d3887fe7457dbe18658e8"/>
+  <project name="android_external_ping" path="external/ping" revision="fa3d82d1c6ab1f41c51a79033c0d620bb9831daf"/>
+  <project name="android_external_ping6" path="external/ping6" revision="2576524bb36b4454cb349ffeb24b41ef70a1498f"/>
+  <project name="android_external_protobuf" path="external/protobuf" revision="5b791219e4830a8a193c0d14372ba0d5b91a2f14"/>
+  <project name="android_external_safe-iop" path="external/safe-iop" revision="aa0725fb1da35e47676b6da30009322eb5ed59be"/>
+  <project name="android_external_sepolicy" path="external/sepolicy" revision="f199882d9bf35ea03b4aabf0fda3f1b154148437"/>
+  <project name="android_external_skia" path="external/skia" revision="62cf76510d3512d4d02fba730d1cc06ece2a9bc7"/>
+  <project name="android_external_sonivox" path="external/sonivox" revision="348e6eef200ff59d12acdd563d082b357440f0ac"/>
+  <project name="android_external_speex" path="external/speex" revision="fb7db5853ffb841a4d32fea8b5c3a43e6b875cae"/>
+  <project name="android_external_sqlite" path="external/sqlite" revision="cbaae1b3f75bc176df00b9ae787580420e71bf38"/>
+  <project name="android_external_stlport" path="external/stlport" revision="03276356a4c22d112a31ae92342bace366af1681"/>
+  <project name="android_external_strace" path="external/strace" revision="a59267872085b4da05f1ea3488bbd6a0eb7a5991"/>
+  <project name="android_external_svox" path="external/svox" revision="2b4425b224ae8ae491d204d0c65498546c821e6d"/>
+  <project name="android_external_tagsoup" path="external/tagsoup" revision="68c2ec9e0acdb3214b7fb91dbab8c9fab8736817"/>
+  <project name="android_external_tinyalsa" path="external/tinyalsa" revision="8ff9baf5ea5e79f6b621af2eb4f332f1e307f71c"/>
+  <project name="android_external_tinyxml" path="external/tinyxml" revision="a17c84af14443fc16de6816dda78ace22299ee03"/>
+  <project name="android_external_tinyxml2" path="external/tinyxml2" revision="c74b546f5af36968ffa56d7fd4529f4273b96f48"/>
+  <project name="android_external_tremolo" path="external/tremolo" revision="3eec17965b3e2974e120e864b351a916f59835ba"/>
+  <project name="android_external_webp" path="external/webp" revision="a4c96a734adf49f5514d26ee2a27c0cec205a395"/>
+  <project name="android_external_webrtc" path="external/webrtc" revision="a48979cdf40d633bd6d249c874d216c52c565ea0"/>
+  <project name="android_external_yaffs2" path="external/yaffs2" revision="03a490214dc2ac29104ed10b29659d9585a6a5f2"/>
+  <project name="android_external_zlib" path="external/zlib" revision="20f1a74432fdb680742c150dc63e4d9ca3bbc2ad"/>
+  <project name="android_frameworks_av" path="frameworks/av" revision="12377bf6c1f3d4e593ff74e5d21e7e79b05c71c6"/>
+  <project name="android_frameworks_base" path="frameworks/base" revision="d8bfdb9db3d81c6bc17b23a5091e0b7dad5f2c11"/>
+  <project name="android_frameworks_native" path="frameworks/native" revision="a9e78447c379aff140e505fa7c05b90b844034bc"/>
+  <project name="android_frameworks_opt_emoji" path="frameworks/opt/emoji" revision="322e6214549f9f9fcd9507b700a4ac4244d1283f"/>
+  <project name="android_frameworks_wilhelm" path="frameworks/wilhelm" revision="073b5888c2af197c129b1b8d2a4deeaf9870e2ed"/>
+  <project name="android_hardware_libhardware" path="hardware/libhardware" revision="852fb38c2d2a8a73990679b65c71b6a36846285c"/>
+  <project name="android_hardware_libhardware_legacy" path="hardware/libhardware_legacy" revision="b8d8a10acac67f9445666a4dec05022864644a48"/>
+  <project name="android_libcore" path="libcore" revision="932eabb61bbee903ff863980aed12a089c37b3c0"/>
+  <project name="android_external_pigz" path="external/pigz" revision="14a54a40beae74f419ea289ac84404b5f4b72684"/>
+  <project name="android_external_fsck_msdos" path="external/fsck_msdos" revision="437424c4f16a30e306a936854fac2032f072a271"/>
+  <project name="android_external_kernel-headers" path="external/kernel-headers" revision="4f6ae3a7e53346a110ee4e02ebbfed8909261d85"/>
+  <project name="android_libnativehelper" path="libnativehelper" revision="3abb5383d9883eb98c0371957043e5d67e448a06"/>
+  <project name="android_system_bluetooth" path="system/bluetooth" revision="e43e95e015205d60fe78622500d55209ff085519"/>
+  <project name="android_system_extras" path="system/extras" revision="397d03c70c62433c132b7669810a47f65493b492"/>
+  <project name="android_system_media" path="system/media" revision="81749cbe66f2defa026e0552f7b9fa33c9eaf26a"/>
+  <project name="android_system_netd" path="system/netd" revision="e91c6133ffe427fec1589e8e52b4d06310bde115"/>
+  <project name="android_system_security" path="system/security" revision="b57bd4a1d4c7e737a8a6e09f35aba1b93626c89f"/>
+  <project name="android_system_vold" path="system/vold" revision="aa564abda8315ea523180785d0f7e9bf552f8583"/>
+  <!--<project name="platform/system/media" path="system/media" remote="caf" revision="LNX.LF.3.5.2.1_1"/>-->
 
+  <project name="Superuser" path="external/koush/Superuser" revision="1bf4fbff05f43da3462a38ef98f38e9e5daff490"/>
+  <project name="android_device_generic_goldfish" path="device/generic/goldfish" revision="bc463b5f2745d1711e6fa3de73413652abf69ec2"/>
 
+  <project path="hardware/qcom/audio" name="android_hardware_qcom_audio" groups="qcom" revision="85263f82487a4c00c4a2cb66a533d8caedbb90e6"/>
+  <project path="hardware/qcom/audio-caf" name="android_hardware_qcom_audio-caf" groups="caf" revision="f281d5ebc7e805f2ceca89a8ab1d75d37d460e8f"/>
+  <project path="hardware/qcom/bt" name="android_hardware_qcom_bt" groups="qcom" revision="f160b3179633c5de3f80a18885c43b8f0f17842c"/>
+  <project path="hardware/qcom/display" name="android_hardware_qcom_display" groups="qcom" revision="e907c49d19362c3b66815694696cb514d352cdc3"/>
+  <project path="hardware/qcom/display-caf" name="android_hardware_qcom_display-caf" groups="caf" revision="183ea776dbec2d020c8f4c2901bcd0cd372dc847"/>
+  <project path="hardware/qcom/gps" name="android_hardware_qcom_gps" groups="qcom" revision="ca269d72a988b1b564d5d90ef714e6aefb1c3d47"/>
+  <project path="hardware/qcom/keymaster" name="android_hardware_qcom_keymaster" groups="qcom" revision="15c1af6c4ccdcd7f943060a32b82312286ca43db"/>
+  <project path="hardware/qcom/media" name="android_hardware_qcom_media" groups="qcom" revision="9de5acbcb24c7fa9bdb3c5216c42961272e1e43e"/>
+  <project path="hardware/qcom/media-caf" name="android_hardware_qcom_media-caf" groups="caf" revision="da280a05e4375e3359daa5955eeac3950667712b"/>
+  <project path="hardware/qcom/msm8960" name="android_hardware_qcom_msm8960" groups="qcom_msm8960" revision="91b15f3d8536ddaae98e83871df95f5a102cad84"/>
+  <project path="hardware/qcom/power" name="android_hardware_qcom_power" revision="e8bb7767af3bb76e7209e198fd74e0ac901aece9"/>
+  <project path="hardware/qcom/sensors" name="android_hardware_qcom_sensors" revision="07c5bcdb36158e22d33bac02eecd83d4ff1fb2f8"/>
 
+  <project path="hardware/broadcom/wlan" name="android_hardware_broadcom_wlan" groups="broadcom_wlan" revision="3cc1f8a1eb2986db05de6dd25c0869921dc41136"/>
+  <project path="external/wpa_supplicant_8" name="android_external_wpa_supplicant_8" groups="pdk" revision="5fd7655a5b8ecb6e94fafcfbe02feaf6bdd94a9d"/>
 
-  <!-- m7ul things -->
-    <project path="device/htc/m7ul" name="android_device_htc_m7ul" revision="74ba46e332ff94d1b94e998d0d1c84e460e6500a" remote="CyanogenMod"/>
-  <project path="device/htc/m7-common" name="android_device_htc_m7-common" revision="78d732b78152db6fb4db3fbfeafa6ee0f65ee069" remote="CyanogenMod"/>
-  <project path="device/htc/msm8960-common" name="android_device_htc_msm8960-common" revision="d3b566f6804589c207baa7d5840631059c610727" remote="CyanogenMod"/>
-  <project path="kernel/htc/m7" name="android_kernel_htc_m7" revision="cd07d32725f7f2be84ad5ecfda90e8f99bc98f45" remote="CyanogenMod"/>
-
+  <project path="hardware/ril" name="android_hardware_ril" groups="pdk" revision="20868eeb0140b90bcfe535d792f7efca837dd906" />
 
 </manifest>
